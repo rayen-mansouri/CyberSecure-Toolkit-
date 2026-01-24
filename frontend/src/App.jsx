@@ -1,0 +1,30 @@
+function App() {
+  return (
+    <div className="min-h-screen bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center p-4">
+      <div className="bg-white rounded-2xl shadow-2xl p-8 max-w-md w-full">
+        <h1 className="text-4xl font-bold text-blue-600 mb-4">
+          🛡️ CyberSecure Toolkit
+        </h1>
+        <p className="text-gray-600 mb-6">
+          Tailwind v3 is now working! ✅
+        </p>
+        <div className="space-y-3">
+          <div className="p-3 bg-blue-100 rounded-lg">
+            <p className="text-sm text-blue-800">✅ Gradient background working</p>
+          </div>
+          <div className="p-3 bg-green-100 rounded-lg">
+            <p className="text-sm text-green-800">✅ Custom colors working</p>
+          </div>
+          <div className="p-3 bg-purple-100 rounded-lg">
+            <p className="text-sm text-purple-800">✅ Spacing & shadows working</p>
+          </div>
+        </div>
+        <button className="w-full mt-6 bg-blue-500 hover:bg-blue-600 text-white font-semibold py-3 px-6 rounded-lg transition-colors">
+          Everything Works! 🎉
+        </button>
+      </div>
+    </div>
+  );
+}
+
+export default App;
