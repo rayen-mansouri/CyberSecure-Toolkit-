@@ -16,7 +16,7 @@ function App() {
   }
 
   return (
-    <div className="min-h-screen bg-terminal-black font-terminal text-terminal-green">
+    <div className="w-full min-h-screen bg-terminal-black font-terminal text-terminal-green overflow-x-hidden">
       {currentPage === 'home' && <Home onNavigate={navigateTo} />}
       {currentPage === 'password' && <PasswordGenerator onBack={() => navigateTo('home')} />}
       {currentPage === 'phishing' && <PhishingDetector onBack={() => navigateTo('home')} />}

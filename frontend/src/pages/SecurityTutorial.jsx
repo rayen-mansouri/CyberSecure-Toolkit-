@@ -278,14 +278,14 @@ function SecurityTutorial({ onBack }) {
   ]
 
   return (
-    <div className="min-h-screen bg-terminal-black">
+    <div className="w-full min-h-screen bg-terminal-black overflow-x-hidden">
       {/* Header */}
-      <div className="border-b border-terminal-green/20 px-6 py-4">
-        <div className="max-w-4xl mx-auto flex items-center justify-between">
-          <h1 className="text-2xl font-bold">🎓 Security Tutorial</h1>
+      <div className="border-b border-terminal-green/20 px-4 sm:px-6 py-3 sm:py-4">
+        <div className="w-full max-w-6xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
+          <h1 className="text-xl sm:text-2xl font-bold">🎓 Security Tutorial</h1>
           <button
             onClick={onBack}
-            className="text-terminal-cyan hover:text-terminal-green transition text-sm"
+            className="text-terminal-cyan hover:text-terminal-green transition text-xs sm:text-sm w-fit"
           >
             ← Back
           </button>
@@ -293,44 +293,44 @@ function SecurityTutorial({ onBack }) {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-4xl mx-auto px-6 py-12">
-        <div className="border border-terminal-green/20 rounded p-8 mb-8">
-          <h2 className="text-xl font-bold mb-4">Protect Yourself from Common Attacks</h2>
-          <p className="text-terminal-cyan text-sm">
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div className="border border-terminal-green/20 rounded p-4 sm:p-8 mb-6 sm:mb-8">
+          <h2 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4">Protect Yourself from Common Attacks</h2>
+          <p className="text-terminal-cyan text-xs sm:text-sm">
             Learn about the most common social engineering and hacking techniques used by cybercriminals, 
             and discover practical strategies to protect yourself. Click on each category to explore specific threats and defenses.
           </p>
         </div>
 
         {/* Sections */}
-        <div className="space-y-4">
+        <div className="space-y-3 sm:space-y-4">
           {sections.map((section) => (
             <div key={section.id} className="border border-terminal-green/20 rounded overflow-hidden">
               {/* Section Header */}
               <button
                 onClick={() => setExpandedSection(expandedSection === section.id ? null : section.id)}
-                className="w-full p-6 hover:bg-terminal-dark/50 transition text-left flex items-center justify-between"
+                className="w-full p-4 sm:p-6 hover:bg-terminal-dark/50 transition text-left flex items-center justify-between gap-3"
               >
-                <div className="flex items-center gap-4">
-                  <span className="text-3xl">{section.icon}</span>
-                  <h3 className="text-xl font-bold">{section.title}</h3>
+                <div className="flex items-center gap-2 sm:gap-4 flex-1 min-w-0">
+                  <span className="text-2xl sm:text-3xl flex-shrink-0">{section.icon}</span>
+                  <h3 className="text-base sm:text-xl font-bold truncate">{section.title}</h3>
                 </div>
-                <span className={`text-terminal-cyan transition transform ${expandedSection === section.id ? 'rotate-180' : ''}`}>
+                <span className={`text-terminal-cyan transition transform flex-shrink-0 ${expandedSection === section.id ? 'rotate-180' : ''}`}>
                   ▼
                 </span>
               </button>
 
               {/* Expanded Content */}
               {expandedSection === section.id && (
-                <div className="border-t border-terminal-green/20 p-6 bg-terminal-dark/50 space-y-6">
+                <div className="border-t border-terminal-green/20 p-4 sm:p-6 bg-terminal-dark/50 space-y-4 sm:space-y-6">
                   {section.dangers.map((danger, idx) => (
-                    <div key={idx} className="border border-terminal-green/20 rounded p-4 bg-terminal-darker">
-                      <h4 className="text-lg font-bold text-terminal-cyan mb-2">{danger.name}</h4>
-                      <p className="text-terminal-green/70 text-sm mb-4">{danger.description}</p>
+                    <div key={idx} className="border border-terminal-green/20 rounded p-3 sm:p-4 bg-terminal-darker">
+                      <h4 className="text-base sm:text-lg font-bold text-terminal-cyan mb-2">{danger.name}</h4>
+                      <p className="text-terminal-green/70 text-xs sm:text-sm mb-3 sm:mb-4">{danger.description}</p>
 
                       {/* Red Flags */}
-                      <div className="mb-4">
-                        <p className="text-sm font-bold text-terminal-red mb-2">🚩 Red Flags:</p>
+                      <div className="mb-3 sm:mb-4">
+                        <p className="text-xs sm:text-sm font-bold text-terminal-red mb-2">🚩 Red Flags:</p>
                         <ul className="space-y-1">
                           {danger.redFlags.map((flag, fIdx) => (
                             <li key={fIdx} className="text-xs text-terminal-cyan ml-4">
@@ -342,7 +342,7 @@ function SecurityTutorial({ onBack }) {
 
                       {/* Protection */}
                       <div>
-                        <p className="text-sm font-bold text-terminal-green mb-2">✓ How to Protect Yourself:</p>
+                        <p className="text-xs sm:text-sm font-bold text-terminal-green mb-2">✓ How to Protect Yourself:</p>
                         <ul className="space-y-1">
                           {danger.protection.map((prot, pIdx) => (
                             <li key={pIdx} className="text-xs text-terminal-green ml-4">
@@ -360,9 +360,9 @@ function SecurityTutorial({ onBack }) {
         </div>
 
         {/* Quick Tips */}
-        <div className="border border-terminal-green/20 rounded p-6 bg-terminal-dark mt-8">
-          <h3 className="text-lg font-bold text-terminal-cyan mb-4">⚡ Quick Security Tips</h3>
-          <ul className="space-y-2 text-sm">
+        <div className="border border-terminal-green/20 rounded p-4 sm:p-6 bg-terminal-dark mt-6 sm:mt-8">
+          <h3 className="text-base sm:text-lg font-bold text-terminal-cyan mb-3 sm:mb-4">⚡ Quick Security Tips</h3>
+          <ul className="space-y-1 sm:space-y-2 text-xs sm:text-sm">
             <li className="text-terminal-green">✓ When in doubt, say no - legitimate requests won't pressure you</li>
             <li className="text-terminal-green">✓ Verify before trusting - always confirm through official channels</li>
             <li className="text-terminal-green">✓ Your password is yours - legitimate companies never ask for it</li>
@@ -374,19 +374,19 @@ function SecurityTutorial({ onBack }) {
         </div>
 
         {/* Key Takeaways */}
-        <div className="border border-terminal-cyan/30 rounded p-6 bg-terminal-dark mt-8">
-          <h3 className="text-lg font-bold text-terminal-cyan mb-4">🎯 Key Takeaways</h3>
-          <p className="text-terminal-green text-sm mb-3">
+        <div className="border border-terminal-cyan/30 rounded p-4 sm:p-6 bg-terminal-dark mt-6 sm:mt-8">
+          <h3 className="text-base sm:text-lg font-bold text-terminal-cyan mb-3 sm:mb-4">🎯 Key Takeaways</h3>
+          <p className="text-terminal-green text-xs sm:text-sm mb-2 sm:mb-3">
             The most effective attacks exploit human nature, not just technology. Hackers use:
           </p>
-          <ul className="space-y-2 text-sm">
+          <ul className="space-y-1 sm:space-y-2 text-xs sm:text-sm">
             <li className="text-terminal-green">• <span className="font-bold">Trust</span> - Creating false authority</li>
             <li className="text-terminal-green">• <span className="font-bold">Urgency</span> - Pressuring quick decisions</li>
             <li className="text-terminal-green">• <span className="font-bold">Fear</span> - Threatening negative consequences</li>
             <li className="text-terminal-green">• <span className="font-bold">Curiosity</span> - Enticing with interesting links/files</li>
             <li className="text-terminal-green">• <span className="font-bold">Greed</span> - Offering rewards or money</li>
           </ul>
-          <p className="text-terminal-cyan text-sm mt-4">
+          <p className="text-terminal-cyan text-xs sm:text-sm mt-3 sm:mt-4">
             By understanding these tactics, you can recognize and avoid them!
           </p>
         </div>

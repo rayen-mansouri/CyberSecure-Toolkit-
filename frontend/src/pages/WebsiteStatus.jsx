@@ -100,14 +100,14 @@ function WebsiteStatus({ onBack }) {
   }
 
   return (
-    <div className="min-h-screen bg-terminal-black">
+    <div className="w-full min-h-screen bg-terminal-black overflow-x-hidden">
       {/* Header */}
-      <div className="border-b border-terminal-green/20 px-6 py-4">
-        <div className="max-w-4xl mx-auto flex items-center justify-between">
-          <h1 className="text-2xl font-bold">🌐 Is It Down?</h1>
+      <div className="border-b border-terminal-green/20 px-4 sm:px-6 py-3 sm:py-4">
+        <div className="w-full max-w-6xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
+          <h1 className="text-xl sm:text-2xl font-bold">🌐 Is It Down?</h1>
           <button
             onClick={onBack}
-            className="text-terminal-cyan hover:text-terminal-green transition text-sm"
+            className="text-terminal-cyan hover:text-terminal-green transition text-xs sm:text-sm w-fit"
           >
             ← Back
           </button>
@@ -115,27 +115,27 @@ function WebsiteStatus({ onBack }) {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-4xl mx-auto px-6 py-12">
-        <div className="border border-terminal-green/20 rounded p-8 mb-8">
-          <h2 className="text-xl font-bold mb-6">Check Website Status</h2>
-          <p className="text-terminal-cyan text-sm mb-8">
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div className="border border-terminal-green/20 rounded p-4 sm:p-8 mb-6 sm:mb-8">
+          <h2 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6">Check Website Status</h2>
+          <p className="text-terminal-cyan text-xs sm:text-sm mb-6 sm:mb-8">
             Enter a website URL to check if it's down for everyone or just for you. 
             Get detailed status information and troubleshooting tips.
           </p>
 
-          <div className="flex gap-3">
+          <div className="flex flex-col sm:flex-row gap-3">
             <input
               type="text"
               value={domain}
               onChange={(e) => setDomain(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && checkStatus()}
               placeholder="example.com or https://example.com"
-              className="flex-1 px-4 py-2 bg-terminal-dark border border-terminal-green/20 rounded text-terminal-green placeholder-terminal-green/40 outline-none focus:border-terminal-green/50"
+              className="flex-1 px-3 sm:px-4 py-2 bg-terminal-dark border border-terminal-green/20 rounded text-terminal-green placeholder-terminal-green/40 outline-none focus:border-terminal-green/50 text-xs sm:text-base"
             />
             <button
               onClick={checkStatus}
               disabled={loading}
-              className="border border-terminal-green text-terminal-green hover:bg-terminal-green hover:text-terminal-black disabled:opacity-50 disabled:cursor-not-allowed px-6 py-2 rounded transition-colors font-bold"
+              className="border border-terminal-green text-terminal-green hover:bg-terminal-green hover:text-terminal-black disabled:opacity-50 disabled:cursor-not-allowed px-4 sm:px-6 py-2 rounded transition-colors font-bold text-xs sm:text-sm whitespace-nowrap"
             >
               {loading ? 'Checking...' : 'Check'}
             </button>
@@ -144,26 +144,26 @@ function WebsiteStatus({ onBack }) {
 
         {/* Results */}
         {result && (
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {result.error ? (
-              <div className="border border-terminal-yellow/30 rounded p-6 bg-terminal-dark">
-                <p className="text-terminal-cyan">{result.error}</p>
+              <div className="border border-terminal-yellow/30 rounded p-4 sm:p-6 bg-terminal-dark">
+                <p className="text-terminal-cyan text-xs sm:text-sm">{result.error}</p>
               </div>
             ) : (
               <>
                 {/* Status Cards */}
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 sm:gap-6">
                   {/* Global Status */}
-                  <div className={`border rounded p-6 ${
+                  <div className={`border rounded p-4 sm:p-6 ${
                     result.globalStatus === 'Up' 
                       ? 'border-terminal-green bg-terminal-dark' 
                       : 'border-terminal-red bg-terminal-dark'
                   }`}>
                     <p className="text-xs text-terminal-cyan/60 mb-2">GLOBAL STATUS</p>
-                    <h3 className="text-2xl font-bold mb-4">
+                    <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">
                       {result.globalStatus === 'Up' ? '✓' : '⚠'} {result.globalStatus}
                     </h3>
-                    <p className={`text-sm ${
+                    <p className={`text-xs sm:text-sm ${
                       result.globalStatus === 'Up'
                         ? 'text-terminal-green'
                         : 'text-terminal-red'
@@ -175,16 +175,16 @@ function WebsiteStatus({ onBack }) {
                   </div>
 
                   {/* Your Status */}
-                  <div className={`border rounded p-6 ${
+                  <div className={`border rounded p-4 sm:p-6 ${
                     result.userStatus === 'Up'
                       ? 'border-terminal-green bg-terminal-dark'
                       : 'border-terminal-yellow bg-terminal-dark'
                   }`}>
                     <p className="text-xs text-terminal-cyan/60 mb-2">YOUR CONNECTION</p>
-                    <h3 className="text-2xl font-bold mb-4">
+                    <h3 className="text-xl sm:text-2xl font-bold mb-3 sm:mb-4">
                       {result.userStatus === 'Up' ? '✓' : '❌'} {result.userStatus}
                     </h3>
-                    <p className={`text-sm ${
+                    <p className={`text-xs sm:text-sm ${
                       result.userStatus === 'Up'
                         ? 'text-terminal-green'
                         : 'text-terminal-yellow'
@@ -197,14 +197,14 @@ function WebsiteStatus({ onBack }) {
                 </div>
 
                 {/* Main Analysis */}
-                <div className={`border rounded p-6 ${
+                <div className={`border rounded p-4 sm:p-6 ${
                   result.justForUser
                     ? 'border-terminal-yellow bg-terminal-dark'
                     : result.isDown
                     ? 'border-terminal-red bg-terminal-dark'
                     : 'border-terminal-green bg-terminal-dark'
                 }`}>
-                  <h3 className="text-xl font-bold mb-4">
+                  <h3 className="text-base sm:text-xl font-bold mb-3 sm:mb-4">
                     {result.justForUser
                       ? '⚠ Issue is on your end'
                       : result.isDown
@@ -213,9 +213,9 @@ function WebsiteStatus({ onBack }) {
                   </h3>
 
                   {result.justForUser && (
-                    <div className="space-y-3">
-                      <p className="text-terminal-cyan">The website is up for others, but you can't reach it. Try:</p>
-                      <ul className="space-y-2 text-sm">
+                    <div className="space-y-2 sm:space-y-3">
+                      <p className="text-terminal-cyan text-xs sm:text-sm">The website is up for others, but you can't reach it. Try:</p>
+                      <ul className="space-y-1 sm:space-y-2 text-xs sm:text-sm">
                         <li className="text-terminal-green">• Check your internet connection</li>
                         <li className="text-terminal-green">• Disable VPN/Proxy temporarily</li>
                         <li className="text-terminal-green">• Clear browser cache and cookies</li>
@@ -227,9 +227,9 @@ function WebsiteStatus({ onBack }) {
                   )}
 
                   {result.isDown && (
-                    <div className="space-y-3">
-                      <p className="text-terminal-cyan">The website is experiencing issues. Issue type: <span className="font-bold">{result.issue}</span></p>
-                      <ul className="space-y-2 text-sm">
+                    <div className="space-y-2 sm:space-y-3">
+                      <p className="text-terminal-cyan text-xs sm:text-sm">The website is experiencing issues. Issue type: <span className="font-bold">{result.issue}</span></p>
+                      <ul className="space-y-1 sm:space-y-2 text-xs sm:text-sm">
                         <li className="text-terminal-green">• Check the website's status page</li>
                         <li className="text-terminal-green">• Follow their social media for updates</li>
                         <li className="text-terminal-green">• Try again in a few minutes</li>
@@ -239,17 +239,17 @@ function WebsiteStatus({ onBack }) {
                   )}
 
                   {!result.isDown && !result.justForUser && (
-                    <p className="text-terminal-green">Everything looks normal. The website is up and accessible.</p>
+                    <p className="text-terminal-green text-xs sm:text-sm">Everything looks normal. The website is up and accessible.</p>
                   )}
                 </div>
 
                 {/* Technical Details */}
-                <div className="border border-terminal-green/20 rounded p-6 bg-terminal-dark">
-                  <h3 className="font-bold mb-4 text-terminal-cyan">Technical Details:</h3>
-                  <div className="grid grid-cols-2 gap-4 text-sm">
+                <div className="border border-terminal-green/20 rounded p-4 sm:p-6 bg-terminal-dark">
+                  <h3 className="font-bold mb-3 sm:mb-4 text-terminal-cyan text-sm sm:text-base">Technical Details:</h3>
+                  <div className="grid grid-cols-2 gap-3 sm:gap-4 text-xs sm:text-sm">
                     <div>
                       <p className="text-terminal-cyan/60 text-xs">Domain</p>
-                      <p className="text-terminal-green font-mono">{result.domain}</p>
+                      <p className="text-terminal-green font-mono truncate">{result.domain}</p>
                     </div>
                     <div>
                       <p className="text-terminal-cyan/60 text-xs">Response Time</p>
@@ -261,7 +261,7 @@ function WebsiteStatus({ onBack }) {
                     </div>
                     <div>
                       <p className="text-terminal-cyan/60 text-xs">Checked At</p>
-                      <p className="text-terminal-green text-xs">{result.checkedAt}</p>
+                      <p className="text-terminal-green text-xs truncate">{result.checkedAt}</p>
                     </div>
                   </div>
                 </div>

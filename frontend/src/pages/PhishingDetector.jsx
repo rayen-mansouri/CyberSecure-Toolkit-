@@ -153,14 +153,14 @@ function PhishingDetector({ onBack }) {
   }
 
   return (
-    <div className="min-h-screen bg-terminal-black">
+    <div className="w-full min-h-screen bg-terminal-black overflow-x-hidden">
       {/* Header */}
-      <div className="border-b border-terminal-green/20 px-6 py-4">
-        <div className="max-w-4xl mx-auto flex items-center justify-between">
-          <h1 className="text-2xl font-bold">🎣 Phishing Detector</h1>
+      <div className="border-b border-terminal-green/20 px-4 sm:px-6 py-3 sm:py-4">
+        <div className="w-full max-w-6xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
+          <h1 className="text-xl sm:text-2xl font-bold">🎣 Phishing Detector</h1>
           <button
             onClick={onBack}
-            className="text-terminal-cyan hover:text-terminal-green transition text-sm"
+            className="text-terminal-cyan hover:text-terminal-green transition text-xs sm:text-sm w-fit"
           >
             ← Back
           </button>
@@ -168,26 +168,26 @@ function PhishingDetector({ onBack }) {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-4xl mx-auto px-6 py-12">
-        <div className="border border-terminal-green/20 rounded p-8 mb-8">
-          <h2 className="text-xl font-bold mb-6">Check if a URL is Safe</h2>
-          <p className="text-terminal-cyan text-sm mb-6">
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div className="border border-terminal-green/20 rounded p-4 sm:p-8 mb-6 sm:mb-8">
+          <h2 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6">Check if a URL is Safe</h2>
+          <p className="text-terminal-cyan text-xs sm:text-sm mb-4 sm:mb-6">
             Paste a suspicious URL below to analyze it for phishing indicators, malware risks, 
             and other security threats.
           </p>
 
-          <div className="flex gap-3">
+          <div className="flex flex-col sm:flex-row gap-3">
             <input
               type="text"
               value={url}
               onChange={(e) => setUrl(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && analyzeUrl()}
               placeholder="https://example.com"
-              className="flex-1 px-4 py-2 bg-terminal-dark border border-terminal-green/20 rounded text-terminal-green placeholder-terminal-green/40 outline-none focus:border-terminal-green/50"
+              className="flex-1 px-3 sm:px-4 py-2 bg-terminal-dark border border-terminal-green/20 rounded text-terminal-green placeholder-terminal-green/40 outline-none focus:border-terminal-green/50 text-xs sm:text-base"
             />
             <button
               onClick={analyzeUrl}
-              className="border border-terminal-green text-terminal-green hover:bg-terminal-green hover:text-terminal-black px-6 py-2 rounded transition-colors"
+              className="border border-terminal-green text-terminal-green hover:bg-terminal-green hover:text-terminal-black px-4 sm:px-6 py-2 rounded transition-colors text-xs sm:text-sm whitespace-nowrap"
             >
               Analyze
             </button>
@@ -196,19 +196,19 @@ function PhishingDetector({ onBack }) {
 
         {/* Results */}
         {result && (
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {/* Threat Level */}
-            <div className={`border rounded p-6 ${
+            <div className={`border rounded p-4 sm:p-6 ${
               result.threat === 'Safe' ? 'border-terminal-green bg-terminal-dark' :
               result.threat === 'Suspicious' ? 'border-terminal-yellow bg-terminal-dark' :
               result.error ? 'border-terminal-red bg-terminal-dark' :
               'border-terminal-red bg-terminal-dark'
             }`}>
-              <div className="flex items-center justify-between mb-4">
-                <h3 className="text-xl font-bold">
+              <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0 mb-3 sm:mb-4">
+                <h3 className="text-lg sm:text-xl font-bold">
                   {result.threat === 'Safe' ? '✓' : '⚠'} {result.threat || 'Analysis'}
                 </h3>
-                <span className={`text-sm font-bold ${
+                <span className={`text-xs sm:text-sm font-bold ${
                   result.threat === 'Safe' ? 'text-terminal-green' :
                   result.threat === 'Suspicious' ? 'text-terminal-yellow' :
                   'text-terminal-red'
@@ -218,11 +218,11 @@ function PhishingDetector({ onBack }) {
               </div>
 
               {result.error ? (
-                <p className="text-terminal-cyan">{result.error}</p>
+                <p className="text-terminal-cyan text-xs sm:text-sm">{result.error}</p>
               ) : (
                 <>
                   {/* Risk Bar */}
-                  <div className="mb-6">
+                  <div className="mb-4 sm:mb-6">
                     <div className="w-full bg-terminal-darker border border-terminal-green/20 rounded h-2 overflow-hidden">
                       <div
                         className={`h-full transition-all ${
@@ -239,11 +239,11 @@ function PhishingDetector({ onBack }) {
 
                   {/* Warnings */}
                   {result.warnings.length > 0 && (
-                    <div className="mb-6">
-                      <p className="text-sm text-terminal-yellow mb-3 font-bold">⚠ Detected Issues:</p>
-                      <ul className="space-y-2">
+                    <div className="mb-4 sm:mb-6">
+                      <p className="text-xs sm:text-sm text-terminal-yellow mb-2 sm:mb-3 font-bold">⚠ Detected Issues:</p>
+                      <ul className="space-y-1 sm:space-y-2">
                         {result.warnings.map((warning, idx) => (
-                          <li key={idx} className="text-sm text-terminal-cyan">
+                          <li key={idx} className="text-xs sm:text-sm text-terminal-cyan">
                             • {warning}
                           </li>
                         ))}
@@ -254,10 +254,10 @@ function PhishingDetector({ onBack }) {
                   {/* Safe Indicators */}
                   {result.safe.length > 0 && (
                     <div>
-                      <p className="text-sm text-terminal-green mb-3 font-bold">✓ Positive Indicators:</p>
-                      <ul className="space-y-2">
+                      <p className="text-xs sm:text-sm text-terminal-green mb-2 sm:mb-3 font-bold">✓ Positive Indicators:</p>
+                      <ul className="space-y-1 sm:space-y-2">
                         {result.safe.map((item, idx) => (
-                          <li key={idx} className="text-sm text-terminal-green">
+                          <li key={idx} className="text-xs sm:text-sm text-terminal-green">
                             • {item}
                           </li>
                         ))}
@@ -269,8 +269,8 @@ function PhishingDetector({ onBack }) {
             </div>
 
             {/* Recommendation */}
-            <div className="border border-terminal-green/20 rounded p-6 bg-terminal-dark">
-              <p className="text-sm text-terminal-cyan">
+            <div className="border border-terminal-green/20 rounded p-4 sm:p-6 bg-terminal-dark">
+              <p className="text-xs sm:text-sm text-terminal-cyan">
                 <strong>Recommendation:</strong>{' '}
                 {result.threat === 'Safe'
                   ? 'This URL appears safe. However, always verify links from unexpected sources.'

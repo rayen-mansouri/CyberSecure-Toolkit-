@@ -139,14 +139,14 @@ function PasswordGenerator({ onBack }) {
   }
 
   return (
-    <div className="min-h-screen bg-terminal-black">
+    <div className="w-full min-h-screen bg-terminal-black overflow-x-hidden">
       {/* Header */}
-      <div className="border-b border-terminal-green/20 px-6 py-4">
-        <div className="max-w-4xl mx-auto flex items-center justify-between">
-          <h1 className="text-2xl font-bold">🔐 Password Generator & Analyzer</h1>
+      <div className="border-b border-terminal-green/20 px-4 sm:px-6 py-3 sm:py-4">
+        <div className="w-full max-w-6xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
+          <h1 className="text-xl sm:text-2xl font-bold">🔐 Password Generator & Analyzer</h1>
           <button
             onClick={onBack}
-            className="text-terminal-cyan hover:text-terminal-green transition text-sm"
+            className="text-terminal-cyan hover:text-terminal-green transition text-xs sm:text-sm w-fit"
           >
             ← Back
           </button>
@@ -154,15 +154,15 @@ function PasswordGenerator({ onBack }) {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-4xl mx-auto px-6 py-12">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
           {/* Generator Section */}
-          <div className="border border-terminal-green/20 rounded p-6">
-            <h2 className="text-xl font-bold mb-6">Generate Password</h2>
+          <div className="border border-terminal-green/20 rounded p-4 sm:p-6">
+            <h2 className="text-lg sm:text-xl font-bold mb-6">Generate Password</h2>
 
             {/* Length Slider */}
             <div className="mb-6">
-              <label className="text-sm text-terminal-cyan mb-2 block">
+              <label className="text-xs sm:text-sm text-terminal-cyan mb-2 block">
                 Password Length: {length}
               </label>
               <input
@@ -184,7 +184,7 @@ function PasswordGenerator({ onBack }) {
                   onChange={(e) => setIncludeUppercase(e.target.checked)}
                   className="accent-terminal-green"
                 />
-                <span className="text-sm">Uppercase Letters (A-Z)</span>
+                <span className="text-xs sm:text-sm">Uppercase Letters (A-Z)</span>
               </label>
               <label className="flex items-center gap-3 cursor-pointer">
                 <input
@@ -193,7 +193,7 @@ function PasswordGenerator({ onBack }) {
                   onChange={(e) => setIncludeLowercase(e.target.checked)}
                   className="accent-terminal-green"
                 />
-                <span className="text-sm">Lowercase Letters (a-z)</span>
+                <span className="text-xs sm:text-sm">Lowercase Letters (a-z)</span>
               </label>
               <label className="flex items-center gap-3 cursor-pointer">
                 <input
@@ -202,7 +202,7 @@ function PasswordGenerator({ onBack }) {
                   onChange={(e) => setIncludeNumbers(e.target.checked)}
                   className="accent-terminal-green"
                 />
-                <span className="text-sm">Numbers (0-9)</span>
+                <span className="text-xs sm:text-sm">Numbers (0-9)</span>
               </label>
               <label className="flex items-center gap-3 cursor-pointer">
                 <input
@@ -211,14 +211,14 @@ function PasswordGenerator({ onBack }) {
                   onChange={(e) => setIncludeSymbols(e.target.checked)}
                   className="accent-terminal-green"
                 />
-                <span className="text-sm">Special Symbols (!@#$%^&*)</span>
+                <span className="text-xs sm:text-sm">Special Symbols (!@#$%^&*)</span>
               </label>
             </div>
 
             {/* Generate Button */}
             <button
               onClick={generatePassword}
-              className="w-full border border-terminal-green text-terminal-green hover:bg-terminal-green hover:text-terminal-black py-2 px-4 rounded transition-colors mb-4"
+              className="w-full border border-terminal-green text-terminal-green hover:bg-terminal-green hover:text-terminal-black py-2 px-4 rounded transition-colors mb-4 text-sm sm:text-base"
             >
               Generate Password
             </button>
@@ -227,10 +227,10 @@ function PasswordGenerator({ onBack }) {
             {password && (
               <div className="bg-terminal-dark border border-terminal-green/20 p-4 rounded">
                 <p className="text-xs text-terminal-cyan/60 mb-2">Generated Password</p>
-                <p className="font-mono text-terminal-green break-all mb-3">{password}</p>
+                <p className="font-mono text-terminal-green break-all mb-3 text-xs sm:text-sm">{password}</p>
                 <button
                   onClick={copyToClipboard}
-                  className="w-full text-sm border border-terminal-cyan text-terminal-cyan hover:bg-terminal-cyan hover:text-terminal-black py-1 px-2 rounded transition-colors"
+                  className="w-full text-xs sm:text-sm border border-terminal-cyan text-terminal-cyan hover:bg-terminal-cyan hover:text-terminal-black py-1 px-2 rounded transition-colors"
                 >
                   Copy to Clipboard
                 </button>
@@ -239,8 +239,8 @@ function PasswordGenerator({ onBack }) {
           </div>
 
           {/* Analyzer Section */}
-          <div className="border border-terminal-green/20 rounded p-6">
-            <h2 className="text-xl font-bold mb-6">Analyze Password Strength</h2>
+          <div className="border border-terminal-green/20 rounded p-4 sm:p-6">
+            <h2 className="text-lg sm:text-xl font-bold mb-6">Analyze Password Strength</h2>
 
             <input
               type="password"
@@ -250,14 +250,14 @@ function PasswordGenerator({ onBack }) {
                 if (e.target.value) analyzePassword(e.target.value)
               }}
               placeholder="Enter password to analyze..."
-              className="w-full px-4 py-2 bg-terminal-dark border border-terminal-green/20 rounded text-terminal-green placeholder-terminal-green/40 mb-6 outline-none focus:border-terminal-green/50"
+              className="w-full px-3 sm:px-4 py-2 bg-terminal-dark border border-terminal-green/20 rounded text-terminal-green placeholder-terminal-green/40 mb-6 outline-none focus:border-terminal-green/50 text-sm sm:text-base"
             />
 
             {strength && (
               <div className="space-y-4">
                 {/* Strength Bar */}
                 <div>
-                  <p className="text-sm text-terminal-cyan mb-2">
+                  <p className="text-xs sm:text-sm text-terminal-cyan mb-2">
                     Strength: <span className="font-bold">{strength.level}</span> ({strength.score}%)
                   </p>
                   <div className="w-full bg-terminal-dark border border-terminal-green/20 rounded h-2 overflow-hidden">
@@ -309,7 +309,7 @@ function PasswordGenerator({ onBack }) {
                     <p className="text-xs text-terminal-cyan mb-2">Suggestions for improvement:</p>
                     <ul className="space-y-1">
                       {strength.feedback.map((item, idx) => (
-                        <li key={idx} className="text-sm text-terminal-green/70">
+                        <li key={idx} className="text-xs sm:text-sm text-terminal-green/70">
                           • {item}
                         </li>
                       ))}
@@ -319,7 +319,7 @@ function PasswordGenerator({ onBack }) {
 
                 {strength.feedback.length === 0 && (
                   <div className="bg-terminal-dark border border-terminal-green/20 rounded p-4">
-                    <p className="text-sm text-terminal-green">✓ Excellent password! This is very secure.</p>
+                    <p className="text-xs sm:text-sm text-terminal-green">✓ Excellent password! This is very secure.</p>
                   </div>
                 )}
               </div>

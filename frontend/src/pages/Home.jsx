@@ -24,18 +24,18 @@ function Home({ onNavigate }) {
   }, [])
 
   return (
-    <div className="min-h-screen bg-terminal-black">
+    <div className="w-full min-h-screen bg-terminal-black overflow-x-hidden">
       {/* Rotating Tips Section */}
-      <div className="border-b border-terminal-green/20 bg-terminal-dark p-4">
-        <div className="max-w-4xl mx-auto">
-          <div className="flex items-center justify-between mb-2">
+      <div className="border-b border-terminal-green/20 bg-terminal-dark p-3 sm:p-4">
+        <div className="w-full max-w-6xl mx-auto px-2 sm:px-4">
+          <div className="flex flex-col sm:flex-row sm:items-center sm:justify-between gap-2 sm:gap-0 mb-2">
             <p className="text-xs text-terminal-green/60">💡 SECURITY TIP</p>
-            <p className="text-xs text-terminal-green/60">Done by: mouhamed rayen mansouri</p>
+            <p className="text-xs text-terminal-green/60 truncate">Done by: mouhamed rayen mansouri</p>
           </div>
-          <p className="text-lg text-terminal-cyan min-h-8">
+          <p className="text-base sm:text-lg text-terminal-cyan min-h-8">
             {tips[currentTipIndex]}
           </p>
-          <div className="flex gap-1 mt-4">
+          <div className="flex gap-1 mt-3 sm:mt-4">
             {tips.map((_, idx) => (
               <div
                 key={idx}
@@ -51,12 +51,12 @@ function Home({ onNavigate }) {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-4xl mx-auto px-6 py-12">
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
         {/* Header */}
-        <div className="mb-12">
-          <h1 className="text-4xl font-bold mb-4">🛡️ CyberSecure Toolkit</h1>
-          <div className="h-px bg-terminal-green/30 w-32 mb-6"></div>
-          <p className="text-terminal-cyan leading-relaxed">
+        <div className="mb-8 sm:mb-12">
+          <h1 className="text-3xl sm:text-4xl lg:text-5xl font-bold mb-3 sm:mb-4">🛡️ CyberSecure Toolkit</h1>
+          <div className="h-px bg-terminal-green/30 w-24 sm:w-32 mb-4 sm:mb-6"></div>
+          <p className="text-sm sm:text-base text-terminal-cyan leading-relaxed">
             A beginner-friendly daily-use application that ensures common cybersecurity safety 
             measures. Whether you're protecting your passwords, spotting dangerous links, or 
             checking if your email has been compromised, CyberSecure Toolkit provides simple 
@@ -66,20 +66,20 @@ function Home({ onNavigate }) {
         </div>
 
         {/* Categories Grid */}
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6">
           {/* Password Generator Card */}
           <button
             onClick={() => onNavigate('password')}
-            className="border border-terminal-green/20 p-6 rounded hover:border-terminal-green/50 transition-all duration-300 text-left group"
+            className="border border-terminal-green/20 p-4 sm:p-6 rounded hover:border-terminal-green/50 transition-all duration-300 text-left group"
           >
-            <h3 className="text-xl font-bold mb-3 group-hover:text-terminal-cyan transition">
+            <h3 className="text-lg sm:text-xl font-bold mb-3 group-hover:text-terminal-cyan transition">
               🔐 Password Generator
             </h3>
-            <p className="text-terminal-green/70 mb-4">
+            <p className="text-sm sm:text-base text-terminal-green/70 mb-4">
               Generate strong passwords and analyze the strength of your existing passwords. 
               Create secure credentials instantly.
             </p>
-            <div className="text-terminal-cyan text-sm">
+            <div className="text-terminal-cyan text-xs sm:text-sm">
               Learn More →
             </div>
           </button>
@@ -87,16 +87,16 @@ function Home({ onNavigate }) {
           {/* Phishing Detector Card */}
           <button
             onClick={() => onNavigate('phishing')}
-            className="border border-terminal-green/20 p-6 rounded hover:border-terminal-green/50 transition-all duration-300 text-left group"
+            className="border border-terminal-green/20 p-4 sm:p-6 rounded hover:border-terminal-green/50 transition-all duration-300 text-left group"
           >
-            <h3 className="text-xl font-bold mb-3 group-hover:text-terminal-cyan transition">
+            <h3 className="text-lg sm:text-xl font-bold mb-3 group-hover:text-terminal-cyan transition">
               🎣 Phishing Detector
             </h3>
-            <p className="text-terminal-green/70 mb-4">
+            <p className="text-sm sm:text-base text-terminal-green/70 mb-4">
               Identify and detect suspicious phishing links before you click. Analyze URLs 
               for security threats and malicious content.
             </p>
-            <div className="text-terminal-cyan text-sm">
+            <div className="text-terminal-cyan text-xs sm:text-sm">
               Learn More →
             </div>
           </button>
@@ -104,16 +104,16 @@ function Home({ onNavigate }) {
           {/* Breach Checker Card */}
           <button
             onClick={() => onNavigate('breach')}
-            className="border border-terminal-green/20 p-6 rounded hover:border-terminal-green/50 transition-all duration-300 text-left group"
+            className="border border-terminal-green/20 p-4 sm:p-6 rounded hover:border-terminal-green/50 transition-all duration-300 text-left group"
           >
-            <h3 className="text-xl font-bold mb-3 group-hover:text-terminal-cyan transition">
+            <h3 className="text-lg sm:text-xl font-bold mb-3 group-hover:text-terminal-cyan transition">
               🚨 Breach Checker
             </h3>
-            <p className="text-terminal-green/70 mb-4">
+            <p className="text-sm sm:text-base text-terminal-green/70 mb-4">
               Check if your email has been compromised in known data breaches. Protect your 
               account before it's too late.
             </p>
-            <div className="text-terminal-cyan text-sm">
+            <div className="text-terminal-cyan text-xs sm:text-sm">
               Learn More →
             </div>
           </button>
@@ -121,16 +121,16 @@ function Home({ onNavigate }) {
           {/* Malware Checker Card */}
           <button
             onClick={() => onNavigate('malware')}
-            className="border border-terminal-green/20 p-6 rounded hover:border-terminal-green/50 transition-all duration-300 text-left group"
+            className="border border-terminal-green/20 p-4 sm:p-6 rounded hover:border-terminal-green/50 transition-all duration-300 text-left group"
           >
-            <h3 className="text-xl font-bold mb-3 group-hover:text-terminal-cyan transition">
+            <h3 className="text-lg sm:text-xl font-bold mb-3 group-hover:text-terminal-cyan transition">
               🔬 Malware Checker
             </h3>
-            <p className="text-terminal-green/70 mb-4">
+            <p className="text-sm sm:text-base text-terminal-green/70 mb-4">
               Upload and scan files for potential threats and malicious content. Get detailed 
               threat analysis and safety recommendations.
             </p>
-            <div className="text-terminal-cyan text-sm">
+            <div className="text-terminal-cyan text-xs sm:text-sm">
               Learn More →
             </div>
           </button>
@@ -138,16 +138,16 @@ function Home({ onNavigate }) {
           {/* Website Status Card */}
           <button
             onClick={() => onNavigate('website')}
-            className="border border-terminal-green/20 p-6 rounded hover:border-terminal-green/50 transition-all duration-300 text-left group"
+            className="border border-terminal-green/20 p-4 sm:p-6 rounded hover:border-terminal-green/50 transition-all duration-300 text-left group"
           >
-            <h3 className="text-xl font-bold mb-3 group-hover:text-terminal-cyan transition">
+            <h3 className="text-lg sm:text-xl font-bold mb-3 group-hover:text-terminal-cyan transition">
               🌐 Is It Down?
             </h3>
-            <p className="text-terminal-green/70 mb-4">
+            <p className="text-sm sm:text-base text-terminal-green/70 mb-4">
               Check if a website is down for everyone or just for you. Get status info and 
               troubleshooting guidance.
             </p>
-            <div className="text-terminal-cyan text-sm">
+            <div className="text-terminal-cyan text-xs sm:text-sm">
               Learn More →
             </div>
           </button>
@@ -155,16 +155,16 @@ function Home({ onNavigate }) {
           {/* Security Tutorial Card */}
           <button
             onClick={() => onNavigate('tutorial')}
-            className="border border-terminal-green/20 p-6 rounded hover:border-terminal-green/50 transition-all duration-300 text-left group"
+            className="border border-terminal-green/20 p-4 sm:p-6 rounded hover:border-terminal-green/50 transition-all duration-300 text-left group"
           >
-            <h3 className="text-xl font-bold mb-3 group-hover:text-terminal-cyan transition">
+            <h3 className="text-lg sm:text-xl font-bold mb-3 group-hover:text-terminal-cyan transition">
               🎓 Security Tutorial
             </h3>
-            <p className="text-terminal-green/70 mb-4">
+            <p className="text-sm sm:text-base text-terminal-green/70 mb-4">
               Learn about common social engineering and hacking attacks. Understand threats and 
               discover practical protection strategies.
             </p>
-            <div className="text-terminal-cyan text-sm">
+            <div className="text-terminal-cyan text-xs sm:text-sm">
               Learn More →
             </div>
           </button>

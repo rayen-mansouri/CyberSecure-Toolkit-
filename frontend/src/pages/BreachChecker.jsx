@@ -147,14 +147,14 @@ function BreachChecker({ onBack }) {
   }
 
   return (
-    <div className="min-h-screen bg-terminal-black">
+    <div className="w-full min-h-screen bg-terminal-black overflow-x-hidden">
       {/* Header */}
-      <div className="border-b border-terminal-green/20 px-6 py-4">
-        <div className="max-w-4xl mx-auto flex items-center justify-between">
-          <h1 className="text-2xl font-bold">🚨 Breach Checker</h1>
+      <div className="border-b border-terminal-green/20 px-4 sm:px-6 py-3 sm:py-4">
+        <div className="w-full max-w-6xl mx-auto flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3 sm:gap-0">
+          <h1 className="text-xl sm:text-2xl font-bold">🚨 Breach Checker</h1>
           <button
             onClick={onBack}
-            className="text-terminal-cyan hover:text-terminal-green transition text-sm"
+            className="text-terminal-cyan hover:text-terminal-green transition text-xs sm:text-sm w-fit"
           >
             ← Back
           </button>
@@ -162,27 +162,27 @@ function BreachChecker({ onBack }) {
       </div>
 
       {/* Main Content */}
-      <div className="max-w-4xl mx-auto px-6 py-12">
-        <div className="border border-terminal-green/20 rounded p-8 mb-8">
-          <h2 className="text-xl font-bold mb-6">Check if Your Email is Breached</h2>
-          <p className="text-terminal-cyan text-sm mb-6">
+      <div className="w-full max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 py-8 sm:py-12">
+        <div className="border border-terminal-green/20 rounded p-4 sm:p-8 mb-6 sm:mb-8">
+          <h2 className="text-lg sm:text-xl font-bold mb-4 sm:mb-6">Check if Your Email is Breached</h2>
+          <p className="text-terminal-cyan text-xs sm:text-sm mb-4 sm:mb-6">
             Enter your email address to check if it has appeared in any known data breaches. 
             This tool helps you identify compromised accounts so you can take action.
           </p>
 
-          <div className="flex gap-3">
+          <div className="flex flex-col sm:flex-row gap-3">
             <input
               type="email"
               value={email}
               onChange={(e) => setEmail(e.target.value)}
               onKeyPress={(e) => e.key === 'Enter' && checkBreach()}
               placeholder="your@email.com"
-              className="flex-1 px-4 py-2 bg-terminal-dark border border-terminal-green/20 rounded text-terminal-green placeholder-terminal-green/40 outline-none focus:border-terminal-green/50"
+              className="flex-1 px-3 sm:px-4 py-2 bg-terminal-dark border border-terminal-green/20 rounded text-terminal-green placeholder-terminal-green/40 outline-none focus:border-terminal-green/50 text-xs sm:text-base"
             />
             <button
               onClick={checkBreach}
               disabled={loading}
-              className="border border-terminal-green text-terminal-green hover:bg-terminal-green hover:text-terminal-black disabled:opacity-50 disabled:cursor-not-allowed px-6 py-2 rounded transition-colors"
+              className="border border-terminal-green text-terminal-green hover:bg-terminal-green hover:text-terminal-black disabled:opacity-50 disabled:cursor-not-allowed px-4 sm:px-6 py-2 rounded transition-colors text-xs sm:text-sm whitespace-nowrap"
             >
               {loading ? 'Checking...' : 'Check'}
             </button>
@@ -191,35 +191,31 @@ function BreachChecker({ onBack }) {
 
         {/* Results */}
         {result && (
-          <div className="space-y-6">
+          <div className="space-y-4 sm:space-y-6">
             {/* Status */}
-            <div className={`border rounded p-6 ${
+            <div className={`border rounded p-4 sm:p-6 ${
               result.breached === false ? 'border-terminal-green bg-terminal-dark' :
               result.breached === true ? 'border-terminal-red bg-terminal-dark' :
               'border-terminal-yellow bg-terminal-dark'
             }`}>
-              <div className="flex items-center gap-3 mb-4">
-                {result.breached === false ? (
-                  <span className="text-3xl">✓</span>
-                ) : result.breached === true ? (
-                  <span className="text-3xl">⚠</span>
-                ) : (
-                  <span className="text-3xl">❌</span>
-                )}
-                <div>
-                  <h3 className="text-lg font-bold">
+              <div className="flex flex-col sm:flex-row sm:items-start gap-3 sm:gap-3 mb-3 sm:mb-4">
+                <span className="text-2xl sm:text-3xl">
+                  {result.breached === false ? '✓' : result.breached === true ? '⚠' : '❌'}
+                </span>
+                <div className="flex-1">
+                  <h3 className="text-base sm:text-lg font-bold">
                     {result.breached === false
                       ? 'Not Found in Breaches'
                       : result.breached === true
                       ? 'Found in Breaches'
                       : 'Error'}
                   </h3>
-                  <p className="text-sm text-terminal-cyan">{result.email}</p>
+                  <p className="text-xs sm:text-sm text-terminal-cyan">{result.email}</p>
                 </div>
               </div>
-              <p className="text-terminal-cyan">{result.message}</p>
+              <p className="text-terminal-cyan text-xs sm:text-sm">{result.message}</p>
               {result.isDemo && (
-                <p className="text-xs text-terminal-green/50 mt-4">
+                <p className="text-xs text-terminal-green/50 mt-3 sm:mt-4">
                   (Demo mode: Using simulated data for demonstration)
                 </p>
               )}
@@ -227,17 +223,17 @@ function BreachChecker({ onBack }) {
 
             {/* Breaches List */}
             {result.breached && result.breaches.length > 0 && (
-              <div className="space-y-4">
-                <h3 className="text-lg font-bold">Data Breaches Found ({result.breaches.length}):</h3>
+              <div className="space-y-3 sm:space-y-4">
+                <h3 className="text-base sm:text-lg font-bold">Data Breaches Found ({result.breaches.length}):</h3>
                 {result.breaches.map((breach, idx) => (
-                  <div key={idx} className="border border-terminal-red/30 rounded p-4 bg-terminal-dark">
-                    <div className="flex items-start justify-between mb-3">
-                      <h4 className="font-bold text-terminal-red">{breach.Name}</h4>
+                  <div key={idx} className="border border-terminal-red/30 rounded p-3 sm:p-4 bg-terminal-dark">
+                    <div className="flex flex-col sm:flex-row sm:items-start sm:justify-between gap-2 sm:gap-0 mb-2 sm:mb-3">
+                      <h4 className="font-bold text-terminal-red text-sm sm:text-base">{breach.Name}</h4>
                       <span className="text-xs text-terminal-yellow">
                         {new Date(breach.BreachDate).toLocaleDateString()}
                       </span>
                     </div>
-                    <p className="text-sm text-terminal-cyan mb-2">
+                    <p className="text-xs sm:text-sm text-terminal-cyan mb-2">
                       💾 {(breach.PwnCount?.toLocaleString() || 'Unknown')} accounts affected
                     </p>
                     <p className="text-xs text-terminal-green/60">
@@ -249,9 +245,9 @@ function BreachChecker({ onBack }) {
             )}
 
             {/* Actions */}
-            <div className="border border-terminal-green/20 rounded p-6 bg-terminal-dark">
-              <h3 className="font-bold mb-4 text-terminal-cyan">What You Should Do:</h3>
-              <ul className="space-y-2 text-sm">
+            <div className="border border-terminal-green/20 rounded p-4 sm:p-6 bg-terminal-dark">
+              <h3 className="font-bold mb-3 sm:mb-4 text-terminal-cyan text-sm sm:text-base">What You Should Do:</h3>
+              <ul className="space-y-1 sm:space-y-2 text-xs sm:text-sm">
                 {result.breached && result.breaches.length > 0 ? (
                   <>
                     <li className="text-terminal-red">⚠ Change your password immediately</li>
@@ -273,7 +269,7 @@ function BreachChecker({ onBack }) {
             </div>
 
             {result.isDemo && (
-              <div className="border border-terminal-yellow/30 rounded p-4 bg-terminal-dark">
+              <div className="border border-terminal-yellow/30 rounded p-3 sm:p-4 bg-terminal-dark">
                 <p className="text-xs text-terminal-yellow">
                   ℹ Using simulated data (API rate limit or demo mode). For real-time checks, visit haveibeenpwned.com
                 </p>

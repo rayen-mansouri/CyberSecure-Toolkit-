@@ -3,8 +3,14 @@
 @tailwind utilities;
 
 @layer base {
+  html {
+    @apply scroll-smooth;
+  }
+
   body {
     @apply bg-terminal-black text-terminal-green font-terminal;
+    width: 100%;
+    overflow-x: hidden;
   }
 
   /* Custom scrollbar */
@@ -34,25 +40,31 @@
 @layer components {
   /* Simple card without excessive effects */
   .tool-card {
-    @apply bg-terminal-dark border border-terminal-green/20 rounded p-6 
+    @apply bg-terminal-dark border border-terminal-green/20 rounded p-4 sm:p-6 
            hover:border-terminal-green/40 transition-colors duration-300;
   }
 
   /* Minimal button style */
   .btn-primary {
-    @apply px-4 py-2 border border-terminal-green text-terminal-green 
+    @apply px-3 sm:px-4 py-2 border border-terminal-green text-terminal-green 
            hover:bg-terminal-green hover:text-terminal-black
-           transition-colors duration-200 font-terminal text-sm;
+           transition-colors duration-200 font-terminal text-xs sm:text-sm
+           whitespace-nowrap;
   }
 
   /* Input field */
   .input-field {
-    @apply w-full px-4 py-2 
+    @apply w-full px-3 sm:px-4 py-2 
            bg-terminal-darker border border-terminal-green/20 
-           rounded text-terminal-green font-terminal
+           rounded text-terminal-green font-terminal text-sm sm:text-base
            focus:ring-1 focus:ring-terminal-green focus:border-terminal-green
            outline-none placeholder-terminal-green/40
            transition-colors duration-200;
+  }
+
+  /* Responsive container */
+  .responsive-container {
+    @apply w-full px-4 sm:px-6 lg:px-8 mx-auto;
   }
 }
 
