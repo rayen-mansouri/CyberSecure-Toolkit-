@@ -169,6 +169,23 @@ function Home({ onNavigate }) {
             </div>
           </button>
         </div>
+
+        {/* Contact Section */}
+        <div className="border-t border-terminal-green/20 mt-12 sm:mt-16 pt-8 sm:pt-12">
+          <div className="bg-terminal-dark border border-terminal-green/20 rounded p-6 sm:p-8">
+            <h2 className="text-xl sm:text-2xl font-bold mb-4">📧 Contact & Support</h2>
+            <p className="text-terminal-green/70 mb-4 text-sm sm:text-base">Have questions or feedback? Reach out:</p>
+            <div className="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4">
+              <span className="text-terminal-cyan font-mono text-sm sm:text-base">✉️ mouhamedrayen.mansouri@esprit.tn</span>
+              <button 
+                onClick={() => navigator.clipboard.writeText('mouhamedrayen.mansouri@esprit.tn')}
+                className="text-terminal-green hover:text-terminal-cyan transition text-xs sm:text-sm w-fit"
+              >
+                Copy Email
+              </button>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   )

@@ -115,6 +115,30 @@ function PasswordGenerator({ onBack }) {
     const entropy = pwd.length * Math.log2(charsetSize)
     if (entropy > 80) score += 10
 
+    // Calculate crack time
+    const totalCombinations = Math.pow(charsetSize, pwd.length)
+    const guessesPerSecond = 1000000000 // 1 billion guesses per second
+    const averageSecondsNeeded = totalCombinations / (2 * guessesPerSecond)
+    
+    let crackTime = ''
+    if (averageSecondsNeeded < 1) {
+      crackTime = 'Less than 1 second'
+    } else if (averageSecondsNeeded < 60) {
+      crackTime = Math.ceil(averageSecondsNeeded) + ' seconds'
+    } else if (averageSecondsNeeded < 3600) {
+      crackTime = Math.ceil(averageSecondsNeeded / 60) + ' minutes'
+    } else if (averageSecondsNeeded < 86400) {
+      crackTime = Math.ceil(averageSecondsNeeded / 3600) + ' hours'
+    } else if (averageSecondsNeeded < 31536000) {
+      crackTime = Math.ceil(averageSecondsNeeded / 86400) + ' days'
+    } else if (averageSecondsNeeded < 31536000 * 1000) {
+      crackTime = Math.ceil(averageSecondsNeeded / 31536000) + ' years'
+    } else if (averageSecondsNeeded < 31536000 * 1000000) {
+      crackTime = Math.ceil(averageSecondsNeeded / (31536000 * 1000)) + ' million years'
+    } else {
+      crackTime = Math.ceil(averageSecondsNeeded / (31536000 * 1000000)) + ' billion years'
+    }
+
     score = Math.max(0, Math.min(score, 100))
 
     let level
@@ -129,7 +153,8 @@ function PasswordGenerator({ onBack }) {
       level,
       feedback: feedback.slice(0, 4),
       detectedCharTypes,
-      entropy: entropy.toFixed(1)
+      entropy: entropy.toFixed(1),
+      crackTime
     })
   }
 
@@ -300,6 +325,16 @@ function PasswordGenerator({ onBack }) {
                   </p>
                   <p className="text-xs text-terminal-green/60 mt-1">
                     {strength.entropy >= 80 ? 'Excellent entropy' : strength.entropy >= 60 ? 'Good entropy' : 'Acceptable entropy'}
+                  </p>
+                </div>
+
+                {/* Crack Time */}
+                <div className="bg-terminal-dark border border-terminal-green/20 rounded p-3">
+                  <p className="text-xs text-terminal-cyan">
+                    Time to Crack: <span className="font-bold text-terminal-green">{strength.crackTime}</span>
+                  </p>
+                  <p className="text-xs text-terminal-green/60 mt-1">
+                    Estimated at 1 billion guesses per second
                   </p>
                 </div>
 
