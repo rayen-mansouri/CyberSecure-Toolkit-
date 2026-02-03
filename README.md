@@ -106,7 +106,7 @@ npm run preview
 ## 📁 Project Structure
 
 ```
-frontend/
+
 ├── src/
 │   ├── pages/
 │   │   ├── Home.jsx                    # Landing page
