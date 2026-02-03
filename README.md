@@ -2,6 +2,8 @@
 
 A modern, beginner-friendly cybersecurity toolkit designed for everyday users. This application provides essential tools to protect your digital identity, detect threats, and stay secure online.
 
+**🚀 [Live Demo](https://cybersecure-toolkit.vercel.app/)** | **📖 [Documentation](#-getting-started)** | **🐛 [Report Issues](https://github.com/rayen-mansouri/CyberSecure-Toolkit-/issues)**
+
 ![React](https://img.shields.io/badge/React-19.2.0-blue?logo=react)
 ![Vite](https://img.shields.io/badge/Vite-7.2.4-blue?logo=vite)
 ![Tailwind CSS](https://img.shields.io/badge/Tailwind-3.4.17-blue?logo=tailwindcss)
